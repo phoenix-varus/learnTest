@@ -7,8 +7,6 @@ import org.junit.Before;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 /**
  * Created by phoenix on 2016/11/20.
  */
