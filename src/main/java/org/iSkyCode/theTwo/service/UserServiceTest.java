@@ -1,10 +1,14 @@
 package org.iSkyCode.theTwo.service;
 
+import org.iSkyCode.helper.DatabaseHelper;
 import org.iSkyCode.theTwo.model.User;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
+import org.junit.Test;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -28,28 +32,34 @@ public class UserServiceTest {
 
     }
 
-    @org.junit.Test
+    @Test
     public void getUserList() throws Exception {
         List<User> userList = userService.getUserList();
-        Assert.assertEquals(0, userList.size());
+        Connection connection = DatabaseHelper.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT  count(1) FROM USER ");
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            System.out.println(resultSet.getInt(1));
+        }
+        DatabaseHelper.closeConnection(connection);
     }
 
-    @org.junit.Test
+    @Test
     public void getUser() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void createUser() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void updateUser() throws Exception {
 
     }
 
-    @org.junit.Test
+    @Test
     public void deleteUser() throws Exception {
 
     }
